@@ -27,6 +27,12 @@ public class ProductController {
         return ResponseEntity.ok(productService.findAll());
     }
 
+    @GetMapping
+    @RequestMapping("/available")
+    public ResponseEntity<List<Product>> findAvailableProducts() {
+        return ResponseEntity.ok(productService.findAvailableProducts());
+    }
+
     @PostMapping
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
         if (this.productService.findById(product) == null) {

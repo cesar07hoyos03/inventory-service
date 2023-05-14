@@ -32,4 +32,12 @@ public class ProductService {
     public Product saveProduct(Product product) {
         return this.productRepository.save(product);
     }
+
+    public List<Product> findAvailableProducts() {
+        return this.productRepository
+                .findAll()
+                .stream()
+                .filter(product -> product.getQuantity() > 0)
+                .toList();
+    }
 }
